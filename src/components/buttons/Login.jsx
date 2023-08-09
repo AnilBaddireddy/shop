@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { email, password } from '../../redux/actions';
 
 const Login = () => {
     const dispatch =useDispatch();  
     const [mail,setmail]=useState('');
     const [pwd,setPwd]=useState('');
-    const state=useSelector((state)=>{
-        console.log(state);
-    })  
+    
     const handleEmail = (val)=>{
         setmail(val);
     }

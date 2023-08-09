@@ -1,12 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import DATA from '../Data'
-import { useSelector } from 'react-redux';
 
 const Product = () => {
-    const state=useSelector((state)=>{
-        console.log(state);
-    })
+
 
     const cardItem = (item) => {
         return (

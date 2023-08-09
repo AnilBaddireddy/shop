@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 
 const userState={
     email:'',
@@ -13,6 +14,7 @@ const user = (state = userState, action) => {
             ...state,
             email:action.payload
         }
+        // eslint-disable-next-line no-unreachable
         break;
 
         case "password" : return {
@@ -20,6 +22,7 @@ const user = (state = userState, action) => {
             password:action.payload
         }
 
+        // eslint-disable-next-line no-unreachable
         break;
         
 
