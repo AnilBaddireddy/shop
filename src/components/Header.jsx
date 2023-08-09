@@ -3,8 +3,11 @@ import { NavLink } from 'react-router-dom'
 import CartBtn from './buttons/CartBtn'
 import Login from './buttons/Login'
 import Signup from './buttons/Signup'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+    const state = useSelector((state)=> state.email);
+    console.log('State',state);
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,7 +33,7 @@ const Header = () => {
                             
                             
                         </ul>
-                    <NavLink className="navbar-brand mx-auto fw-bold" to="/">APPLE MART</NavLink>
+                    <NavLink className="navbar-brand mx-auto fw-bold" to="/">{state !== undefined && state !== null ? state.email :''}APPLE MART</NavLink>
                     <Login/>
                     <Signup/>
                     <CartBtn/>

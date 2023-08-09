@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useState } from 'react';
 import DATA from '../Data';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {addItem, delItem} from '../redux/actions/index'
 
 const ProductDetail = () => {
     const [cartBtn, setCartBtn] = useState("Add to Cart")
-    {/* Now we need a product id which is pass from the product page. */}
+    const [user,setUser]=useState('');
+    // {/* Now we need a product id which is pass from the product page. */}
     const proid = useParams();
     const proDetail = DATA.filter(x=>x.id == proid.id)
     const product = proDetail[0];
     console.log(product);
-
+  
+    
+    
     // We need to store useDispatch in a variable
     const dispatch = useDispatch()
 
@@ -35,7 +38,7 @@ const ProductDetail = () => {
                     <img src={product.img} alt={product.title}height="400px" />
                 </div>
                 <div className="col-md-6 d-flex flex-column justify-content-center">
-                    <h1 className="display-5 fw-bold">{product.title}</h1>
+                    <h1 className="display-5 fw-bold">{user}{product.title}</h1>
                     <hr />
                     <h2 className="my-4">${product.price}</h2>
                     <p className="lead">{product.desc}</p>

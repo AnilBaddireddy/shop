@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useDispatch, useSelector} from 'react-redux';
+import { email, password } from '../../redux/actions';
 
 const Login = () => {
+    const dispatch =useDispatch();  
+    const [mail,setmail]=useState('');
+    const [pwd,setPwd]=useState('');
+    const state=useSelector((state)=>{
+        console.log(state);
+    })  
+    const handleEmail = (val)=>{
+        setmail(val);
+    }
+    const handlePwd = (val)=>{
+        setPwd(val);
+    }
+
+    const submitHandler = (event) =>{
+        
+        dispatch(email(mail));
+        dispatch(password(pwd));
+        event.preventDefault();
+    }
+
     return (
         <>
             {/* <!-- Button trigger modal --> */}
@@ -23,15 +45,19 @@ const Login = () => {
                             <button className="btn btn-primary w-100 mb-4">
                                <span className="fa fa-facebook me-2"></span> Sign in With Facebook
                             </button>
-                            <form>
+                            <form onSubmit={submitHandler}>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                    <input type="email" className="form-control"
+                                    onChange={(e)=>handleEmail(e.target.value)}
+                                    id="exampleInputEmail1" aria-describedby="emailHelp"/>
                                         <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
                                     <div className="mb-3">
                                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                                        <input type="password" className="form-control" id="exampleInputPassword1"/>
+                                        <input type="password" className="form-control"
+                                        onChange={(e)=>handlePwd(e.target.value)}
+                                        id="exampleInputPassword1"/>
   </div>
                                         <div className="mb-3 form-check">
                                             <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
